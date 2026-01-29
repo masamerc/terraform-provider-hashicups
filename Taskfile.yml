@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: "3"
+
+vars:
+  GREETING: Hello, world!
+
+tasks:
+  default:
+    desc: Print a greeting message
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  api/health:
+    cmds:
+      - curl localhost:19090/health/readyz
+  api/signup:
+    cmds:
+      - curl -X POST localhost:19090/signup -d '{"username":"education", "password":"test123"}'
