@@ -18,3 +18,11 @@ tasks:
   api/signup:
     cmds:
       - curl -X POST localhost:19090/signup -d '{"username":"education", "password":"test123"}'
+
+  terraform/plan/coffees_data_source:
+    env:
+      # TF_LOG: TRACE
+      TF_LOG_PATH: trace.txt
+      TF_LOG_PROVIDER: DEBUG
+    cmds:
+      - cd examples/coffees && terraform plan
